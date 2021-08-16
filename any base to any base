@@ -1,0 +1,48 @@
+#include <iostream>
+
+using namespace std;
+
+int decmaltoanybase(int n,int givenbase){
+    int ans=0;
+    int power=1;
+    while(n!=0){
+        int r=n%givenbase;
+        n/=givenbase;
+        ans+=(r*power);
+        power*=10;
+    }
+    return ans;
+}
+int anybasetodecimal(int n,int base){
+    int ans=0;
+    int power=1;
+    while(n!=0){
+        int r=n%base;
+        n/=base;
+        ans+=(r*power);
+        power*=base;
+    }
+    return ans;
+}
+
+int main()
+{
+    int n,base,givenbase,choice;
+    cout<<"Input number to be converted:";
+    cin>>n;
+    cout<< "\n\nwhat is the base of this number? : ";
+    cin>>givenbase;
+    cout<<"Enter the base of new base integer :";
+    cin>>base;
+    int decno= anybasetodecimal(n,givenbase); 
+    int ans= decmaltoanybase(decno,base);
+    cout<<"The conversion of "<<n<<" from base "<<givenbase<<" to base "<<base<<" reads as :";
+    cout<<ans<<endl;
+    cout<<"\nWould you like to run the conversion process again?(1=Yes, 2= No)";
+    cin>>choice;
+    if(choice==1)main();
+    
+    
+    return 0;
+
+} 
